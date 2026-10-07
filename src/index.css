@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    @apply bg-canvas font-sans text-ink antialiased;
+    font-feature-settings: 'tnum' 0;
+  }
+  :focus-visible { @apply outline-none ring-2 ring-trace ring-offset-2 ring-offset-white; }
+  [lang='bn'], .font-bn { font-family: 'Hind Siliguri', 'IBM Plex Sans', system-ui, sans-serif; }
+  input[type='date']::-webkit-calendar-picker-indicator { cursor: pointer; opacity: 0.6; }
+}
+
+@layer components {
+  /* Faint PCB traces in the sidebar's lower corner – decoration kept quiet. */
+  .pcb-rail {
+    background-image:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='220' viewBox='0 0 256 220' fill='none' stroke='%2324426F' stroke-width='1.2'%3E%3Cpath d='M0 200h60l20-20h90l16 16h70'/%3E%3Cpath d='M0 170h30l18-18h70'/%3E%3Cpath d='M120 220v-26l14-14h40'/%3E%3Ccircle cx='118' cy='152' r='3' fill='%230B1B33'/%3E%3Ccircle cx='174' cy='180' r='3' fill='%230B1B33'/%3E%3Ccircle cx='256' cy='196' r='3' fill='%230B1B33'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: left bottom;
+  }
+  /* Technical grid for the sign-in screen */
+  .tech-grid {
+    background-color: #0B1B33;
+    background-image:
+      linear-gradient(rgba(36,66,111,0.45) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(36,66,111,0.45) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+}
+
+@keyframes shimmer { 100% { transform: translateX(100%); } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}
